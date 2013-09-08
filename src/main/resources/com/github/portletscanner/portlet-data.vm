@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-data>
+#foreach ($portlet in ${portlets})
+    <portlet name="${portlet.Name}">
+        <packages>
+#foreach ($package in ${portlet.packages})
+            <package name="${package.name}">
+#foreach ($class in ${package.classes})
+                <class name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+                </class>
+#end
+            </package>
+#end
+        </packages>
+        <contextes>
+#foreach ($package in ${portlet.contexts})
+#foreach ($class in ${package.classes})
+            <context name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+            </context>
+#end
+#end
+        </contextes>
+        <jsps>
+#foreach ($package in ${portlet.jsps})
+            <jsp name="${package.name}">
+#foreach ($class in ${package.classes})
+                <file name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+                </file>
+#end
+            </jsp>
+#end
+        </jsps>
+        <jses>
+#foreach ($package in ${portlet.jses})
+            <js name="${package.name}">
+#foreach ($class in ${package.classes})
+                <file name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+                </file>
+#end
+            </js>
+#end
+        </jses>
+        <csses>
+#foreach ($package in ${portlet.csses})
+            <css name="${package.name}">
+#foreach ($class in ${package.classes})
+                <file name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+                </file>
+#end
+            </css>
+#end
+        </csses>
+#if (${portlet.tags} && ${portlet.tags.size()} > 0)
+        <tags>
+#foreach ($package in ${portlet.tags})
+#foreach ($class in ${package.classes})
+            <tag name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+            </tag>
+#end
+#end
+        </tags>
+#end
+#if (${portlet.tlds} && ${portlet.tlds.size()} > 0)
+        <tlds>
+#foreach ($package in ${portlet.tlds})
+#foreach ($class in ${package.classes})
+            <tld name="${class.Name}">
+<src><![CDATA[${class.Src}]]></src>
+            </tld>
+#end
+#end
+        </tlds>
+#end
+    </portlet>
+#end
+</portlet-data>
